@@ -1,2 +1,20 @@
+service: metabase
 runtime: custom
 env: flex
+
+# reduce costs to a minimum
+# (default is 2 instances for redundancy)
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 0.6
+  disk_size_gb: 10
+
+env_variables:
+  MB_DB_TYPE: postgres
+  MB_DB_DBNAME: metabase
+  MB_DB_USER: <*** INSERT POSTGRES USERNAME HERE ***>
+  MB_DB_PASS: <*** INSERT POSTGRES PASSWORD HERE ***>
+  MB_DB_HOST: 127.0.0.1
